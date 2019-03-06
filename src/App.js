@@ -1,6 +1,7 @@
 import React from "react";
 import Info from "./components/info";
 import Form from "./components/form";
+import Forecast from "./components/forecast";
 
 class App extends React.Component {
   render() {
@@ -8,6 +9,7 @@ class App extends React.Component {
       <div>
         <Info/>
         <Form/>
+        <Forecast/>
       </div>
     );
   }
