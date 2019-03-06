@@ -5,9 +5,9 @@ class Weather extends React.Component {
     if(this.props.city !== '') {
       return(
         <div>
-          <h2>{this.props.city}, {this.props.country}</h2>
-          <p><img alt="icon"src={this.props.icon}></img> {this.props.dscrptn}</p>
-          <p>Temperature: {this.props.temp}°C</p>
+          <h2>{this.props.city}, {this.props.country} </h2>
+          <p><img alt="icon"src={this.props.icon}></img> {this.props.temp}°C </p>
+          <p>{this.props.dscrptn}</p>
           <p>Pressure: {this.props.pressure} hpa</p>
           <p>Humidity: {this.props.humidity} %</p>
           <p>Min Temperature: {this.props.tempMin}°C</p>

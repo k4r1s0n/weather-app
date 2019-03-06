@@ -30,16 +30,20 @@ class App extends React.Component {
     fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`);
     const data = await apiUrl.json();
     const icon = `https://openweathermap.org/img/w/${data.weather[0].icon}.png`;
+    const tempRound = (temp) => Math.round(temp);
+    const roundTemp = tempRound(data.main.temp);
+    const roundMinTemp = tempRound(data.main.temp_min);
+    const roundMaxTemp = tempRound(data.main.temp_max);
     if (city) {
       console.log(data);
       this.setState ({
-        temp: data.main.temp,
+        temp: roundTemp,
         city: data.name,
         country: data.sys.country,
         pressure: data.main.pressure,
         humidity: data.main.humidity,
-        tempMin: data.main.temp_min,
-        tempMax: data.main.temp_max,
+        tempMin: roundMinTemp,
+        tempMax: roundMaxTemp,
         dscrptn: data.weather[0].description,
         icon: icon,
         error: '',
