@@ -16,6 +16,8 @@ class App extends React.Component {
       humidity: '',
       tempMin: '',
       tempMax: '',
+      dscrptn: '',
+      icon: '',
       error: '',
     }
     this.getWeather = this.getWeather.bind(this);
@@ -27,6 +29,7 @@ class App extends React.Component {
     const apiUrl = await
     fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`);
     const data = await apiUrl.json();
+    const icon = `https://openweathermap.org/img/w/${data.weather[0].icon}.png`;
     if (city) {
       console.log(data);
       this.setState ({
@@ -37,6 +40,8 @@ class App extends React.Component {
         humidity: data.main.humidity,
         tempMin: data.main.temp_min,
         tempMax: data.main.temp_max,
+        dscrptn: data.weather[0].description,
+        icon: icon,
         error: '',
       })
     }
@@ -55,6 +60,8 @@ class App extends React.Component {
           humidity={this.state.humidity}
           tempMin={this.state.tempMin}
           tempMax={this.state.tempMax}
+          dscrptn={this.state.dscrptn}
+          icon={this.state.icon}
         />
       </div>
     );
