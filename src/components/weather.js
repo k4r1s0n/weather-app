@@ -16,7 +16,9 @@ class Weather extends React.Component {
       );
     } else {
       return(
-        <div></div>
+        <div>
+          <p>{this.props.error}</p>
+        </div>
       );
     }
   }
