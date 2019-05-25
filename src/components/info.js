@@ -5,6 +5,7 @@ class Info extends React.Component {
     return(
       <div>
         <h1>Weather Application</h1>
+        <p>To see the weather in your current location press Search</p>
         <p>Please enter your city and country</p>
       </div>
     );

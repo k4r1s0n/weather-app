@@ -1,7 +1,7 @@
 import React from "react";
-import Info from "./components/info";
-import Form from "./components/form";
-import Weather from "./components/weather";
+import Info from "./components/Info";
+import Form from "./components/Form";
+import Weather from "./components/Weather";
 
 const API_KEY = "b31e00def348fa90ff280124c0e4d3b8";
 
@@ -22,50 +22,70 @@ class App extends React.Component {
     }
     this.getWeather = this.getWeather.bind(this);
   }
-  
+
   getWeather = async (event) => {
+    let latitude;
+    let longitude;
+    if (navigator.geolocation) { //check if geolocation is available
+      navigator.geolocation.getCurrentPosition(function(position){
+        latitude = position.coords.latitude;
+        longitude = position.coords.longitude;
+      });   
+    }
     event.preventDefault();
     const city = event.target.elements.city.value;
     console.log(city);
-  
+    const apiUrlCity = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`);
+    const apiUrlCoord = await fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`);
+    const currentData = await apiUrlCoord.json();
+    console.log(currentData);
+    console.log(currentData.main.temp);
+    const userData = await apiUrlCity.json();
+    const icon = (data) =>`https://openweathermap.org/img/w/${data.weather[0].icon}.png`;
+    const roundTemp = (temp) => Math.round(temp);
+    const roundMinTemp = (temp) => Math.round(temp);
+    const roundMaxTemp = (temp) => Math.round(temp);
     if (city === '') {
-      const errorMes = 'Enter your city please';
       this.setState ({
-        temp: '',
-        city: '',
-        country: '',
-        pressure: '',
-        humidity: '',
-        tempMin: '',
-        tempMax: '',
-        dscrptn: '',
-        icon: '',
-        error: errorMes,
+        temp: roundTemp(currentData.main.temp),
+        city: currentData.name,
+        country: currentData.sys.country,
+        pressure: currentData.main.pressure,
+        humidity: currentData.main.humidity,
+        tempMin: roundMinTemp(currentData.main.temp_min),
+        tempMax: roundMaxTemp(currentData.main.temp_max),
+        dscrptn: currentData.weather[0].description,
+        icon: icon(currentData),
+        error: '',
       })
+    } else if (userData.message === 'city not found') {
+        const errorMes = 'Enter your city correctly';
+        this.setState ({
+          temp: '',
+          city: '',
+          country: '',
+          pressure: '',
+          humidity: '',
+          tempMin: '',
+          tempMax: '',
+          dscrptn: '',
+          icon: '',
+          error: errorMes,
+        })
     } else {
-      const apiUrl = await
-      fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`);
-      const data = await apiUrl.json();
-      const icon = `https://openweathermap.org/img/w/${data.weather[0].icon}.png`;
-      const tempRound = (temp) => Math.round(temp);
-      const roundTemp = tempRound(data.main.temp);
-      const roundMinTemp = tempRound(data.main.temp_min);
-      const roundMaxTemp = tempRound(data.main.temp_max);
-      console.log(data);
       this.setState ({
-        temp: roundTemp,
-        city: data.name,
-        country: data.sys.country,
-        pressure: data.main.pressure,
-        humidity: data.main.humidity,
-        tempMin: roundMinTemp,
-        tempMax: roundMaxTemp,
-        dscrptn: data.weather[0].description,
-        icon: icon,
+        temp: roundTemp(userData.main.temp),
+        city: userData.name,
+        country: userData.sys.country,
+        pressure: userData.main.pressure,
+        humidity: userData.main.humidity,
+        tempMin: roundMinTemp(userData.main.temp_min),
+        tempMax: roundMaxTemp(userData.main.temp_max),
+        dscrptn: userData.weather[0].description,
+        icon: icon(userData),
         error: '',
       })
     }
-    
   }
   render() {
     return(
