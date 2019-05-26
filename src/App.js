@@ -2,12 +2,14 @@ import React from "react";
 import Info from "./components/Info";
 import Form from "./components/Form";
 import Weather from "./components/Weather";
+import Beach from "./video/beach.mp4"
 
 const API_KEY = "b31e00def348fa90ff280124c0e4d3b8";
 
 class App extends React.Component {
   constructor(props){
     super(props);
+    
     this.state = {
       temp: '',
       city: '',
@@ -22,7 +24,7 @@ class App extends React.Component {
     }
     this.getWeather = this.getWeather.bind(this);
   }
-
+  
   getWeather = async (event) => {
     let latitude;
     let longitude;
@@ -45,6 +47,9 @@ class App extends React.Component {
     const roundTemp = (temp) => Math.round(temp);
     const roundMinTemp = (temp) => Math.round(temp);
     const roundMaxTemp = (temp) => Math.round(temp);
+    const capitalizeFirstLetter = (string) => {
+      return string.split(/\s+/).map(word => word[0].toUpperCase() + word.substring(1)).join(' ');
+    };
     if (city === '') {
       this.setState ({
         temp: roundTemp(currentData.main.temp),
@@ -54,7 +59,7 @@ class App extends React.Component {
         humidity: currentData.main.humidity,
         tempMin: roundMinTemp(currentData.main.temp_min),
         tempMax: roundMaxTemp(currentData.main.temp_max),
-        dscrptn: currentData.weather[0].description,
+        dscrptn: capitalizeFirstLetter(currentData.weather[0].description),
         icon: icon(currentData),
         error: '',
       })
@@ -81,7 +86,7 @@ class App extends React.Component {
         humidity: userData.main.humidity,
         tempMin: roundMinTemp(userData.main.temp_min),
         tempMax: roundMaxTemp(userData.main.temp_max),
-        dscrptn: userData.weather[0].description,
+        dscrptn: capitalizeFirstLetter(userData.weather[0].description),
         icon: icon(userData),
         error: '',
       })
@@ -89,29 +94,30 @@ class App extends React.Component {
   }
   render() {
     return(
-      <div className="wrapper">
-        <div className="main">
-          <div className="container">
-            <div className="row">
-              <div className="col-sm-5 info">
-                <Info/>
-              </div>
-              <div className="col-sm-7 form">
-                <Form weatherMethod={this.getWeather}/>
-                <Weather
-                  temp={this.state.temp}
-                  city={this.state.city}
-                  country={this.state.country}
-                  pressure={this.state.pressure}
-                  humidity={this.state.humidity}
-                  tempMin={this.state.tempMin}
-                  tempMax={this.state.tempMax}
-                  dscrptn={this.state.dscrptn}
-                  icon={this.state.icon}
-                  error={this.state.error}
-                />
-              </div>
-            </div>
+      <div id="app" className="container">
+        <div className="vid-container">
+          <video loop autoPlay>
+            <source src={Beach}  type="video/mp4"></source>
+          </video>
+        </div>
+        <div id="wrap" className="row">
+          <div id='info' className="col-md-6">
+            <Info/>
+          </div>
+          <div id='form' className="col-md-6">
+            <Form weatherMethod={this.getWeather}/>
+            <Weather
+              temp={this.state.temp}
+              city={this.state.city}
+              country={this.state.country}
+              pressure={this.state.pressure}
+              humidity={this.state.humidity}
+              tempMin={this.state.tempMin}
+              tempMax={this.state.tempMax}
+              dscrptn={this.state.dscrptn}
+              icon={this.state.icon}
+              error={this.state.error}
+            />
           </div>
         </div>
       </div>
