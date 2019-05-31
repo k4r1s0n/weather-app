@@ -2,7 +2,6 @@ import React from "react";
 import Info from "./components/Info";
 import Form from "./components/Form";
 import Weather from "./components/Weather";
-import Beach from "./video/beach.mp4";
 
 const API_KEY = "b31e00def348fa90ff280124c0e4d3b8";
 
@@ -123,11 +122,6 @@ class App extends React.Component {
   render() {
     return (
       <div id="app" className="container">
-        <div className="vid-container">
-          <video loop autoPlay>
-            <source src={Beach} type="video/mp4" />
-          </video>
-        </div>
         <div id="wrap" className="row">
           <div id="info" className="col-md-6">
             <Info />

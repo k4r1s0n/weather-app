@@ -6,7 +6,7 @@ class Info extends React.Component {
       <div className="text-center">
         <h1>Weather Application</h1>
         <div className="btn-group info-button">
-          <button type="button" className="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <button type="button" className="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Weather in current location
           </button>
           <div className="dropdown-menu dropdown-menu-right">
@@ -15,7 +15,7 @@ class Info extends React.Component {
         </div>
 
         <div className="btn-group info-button">
-          <button type="button" className="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <button type="button" className="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Weather in another location
           </button>
           <div className="dropdown-menu dropdown-menu-right">
