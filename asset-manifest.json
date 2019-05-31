@@ -1,16 +1,16 @@
 {
-  "main.css": "/weather-app/static/css/main.29c1a452.chunk.css",
-  "main.js": "/weather-app/static/js/main.ac8b580f.chunk.js",
-  "main.js.map": "/weather-app/static/js/main.ac8b580f.chunk.js.map",
-  "runtime~main.js": "/weather-app/static/js/runtime~main.8d9c99a4.js",
-  "runtime~main.js.map": "/weather-app/static/js/runtime~main.8d9c99a4.js.map",
-  "static/css/2.469b9ec8.chunk.css": "/weather-app/static/css/2.469b9ec8.chunk.css",
-  "static/js/2.09322b4a.chunk.js": "/weather-app/static/js/2.09322b4a.chunk.js",
-  "static/js/2.09322b4a.chunk.js.map": "/weather-app/static/js/2.09322b4a.chunk.js.map",
+  "main.css": "/weather-app/static/css/main.7341511d.chunk.css",
+  "main.js": "/weather-app/static/js/main.2d6e3697.chunk.js",
+  "main.js.map": "/weather-app/static/js/main.2d6e3697.chunk.js.map",
+  "runtime~main.js": "/weather-app/static/js/runtime~main.90e6a6c3.js",
+  "runtime~main.js.map": "/weather-app/static/js/runtime~main.90e6a6c3.js.map",
+  "static/css/2.e8bfcbcc.chunk.css": "/weather-app/static/css/2.e8bfcbcc.chunk.css",
+  "static/js/2.c0be574c.chunk.js": "/weather-app/static/js/2.c0be574c.chunk.js",
+  "static/js/2.c0be574c.chunk.js.map": "/weather-app/static/js/2.c0be574c.chunk.js.map",
   "index.html": "/weather-app/index.html",
-  "precache-manifest.506ddeaafb4f5289a1ff23df8394577d.js": "/weather-app/precache-manifest.506ddeaafb4f5289a1ff23df8394577d.js",
+  "precache-manifest.daea0123b4a827dc38e987bb8ecb02af.js": "/weather-app/precache-manifest.daea0123b4a827dc38e987bb8ecb02af.js",
   "service-worker.js": "/weather-app/service-worker.js",
-  "static/css/2.469b9ec8.chunk.css.map": "/weather-app/static/css/2.469b9ec8.chunk.css.map",
-  "static/css/main.29c1a452.chunk.css.map": "/weather-app/static/css/main.29c1a452.chunk.css.map",
-  "static/media/beach.mp4": "/weather-app/static/media/beach.7e8a870b.mp4"
+  "static/css/2.e8bfcbcc.chunk.css.map": "/weather-app/static/css/2.e8bfcbcc.chunk.css.map",
+  "static/css/main.7341511d.chunk.css.map": "/weather-app/static/css/main.7341511d.chunk.css.map",
+  "static/media/App.css": "/weather-app/static/media/background.40769a63.jpg"
 }
